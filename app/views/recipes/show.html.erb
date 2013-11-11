@@ -1,0 +1,21 @@
+<%= render 'form' %>
+<br /><br />
+
+<div class="row">
+<div id="container" class="js-masonry"
+  data-masonry-options='{"itemSelector": ".col-md-4" }'>
+	<% @recipes.each do |recipe| %>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<%= image_tag(recipe["imageUrlsBySize"]["90"].gsub(/=s90-c$/, '')) %>
+				<div class="caption">
+				<h3><%= recipe["recipeName"] %></h3>
+				<h5>Rating: <%= recipe["rating"] %></h5>
+				<h5>Ingredients: <%= recipe["ingredients"].join(", ") %></h5>
+				<p><a href="http://www.yummly.com/recipe/<%= recipe["id"] %>" class="btn btn-info" role="button">Get Recipe on Yummly!</a></p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+</div>

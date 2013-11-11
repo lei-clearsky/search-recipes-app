@@ -1,0 +1,12 @@
+<h1>Search Ingredients!</h1>
+<%= render 'form' %>
+
+<% @parsed_response.[1]each do |recipe| %>
+	recipe.map do |r|
+		<p><%= r.recipeName%></p>
+		<p><%= r.imageUrlsBySize.delete "=s90-c" %></p>
+		<p><%= r.ingredients%></p>
+		<p><%= r.totalTimeInSeconds/60%></p>
+		<p><%= %></p>
+	<%end%>
+<%end%>
