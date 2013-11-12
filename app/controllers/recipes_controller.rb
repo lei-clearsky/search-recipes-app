@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id])
-		base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=&_app_key=&maxResult=100&"     
+		base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=&_app_key=&maxResult=50&"     
 		#base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=#{ENV["APPLICATION_ID"]}&_app_key=#{ENV["APPLICATION_KEY"]}&"
 	    
 	    ingredients = @recipe.ingredent.split(",").map {|ingredient| ingredient.strip }
@@ -32,6 +32,18 @@ class RecipesController < ApplicationController
 		#escaped_jsonp = response.match(/(bq\.\ .*\(.*\);)(.*)/).catches[1]
 		parsed_response = JSON.parse(response)
 		@recipes = parsed_response["matches"].sort_by { |response| response["ingredients"].count }
+		#max_result = parsed_response["matches"].count
+		#@recipes = @myrecipes + "&maxResult=#{max_result}"
+	end
+
+	def update
+  		@recipe = Recipe.find(params[:id])
+ 
+  		if @recipe.update(safe_recipe_params)
+    		redirect_to @recipe
+  		else
+    		render 'show'
+  		end
 	end
 
 	private
