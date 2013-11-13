@@ -1,12 +1,7 @@
-<h1>Search Ingredients!</h1>
-<%= render 'form' %>
-
-<% @parsed_response.[1]each do |recipe| %>
-	recipe.map do |r|
-		<p><%= r.recipeName%></p>
-		<p><%= r.imageUrlsBySize.delete "=s90-c" %></p>
-		<p><%= r.ingredients%></p>
-		<p><%= r.totalTimeInSeconds/60%></p>
-		<p><%= %></p>
-	<%end%>
-<%end%>
+<div class="row" >
+  	<div class="col-md-6 col-md-offset-3">
+		<div class="text-center"><h1>Dont' feel like going out to eat? Type what's in your fridge below. </h1></div>
+		<br />
+		<%= render 'form' %>
+  	</div>
+</div>

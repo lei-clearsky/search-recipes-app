@@ -1,7 +1,7 @@
 SearchRecipes::Application.routes.draw do
 
-  root to: "recipes#new"
-  resources :recipes
+  root to: "recipes#index"
+  post '/search' => 'recipes#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

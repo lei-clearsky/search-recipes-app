@@ -1,6 +1,6 @@
-<%= form_for @recipe, :recipe => recipes_path do |f| %>
-<div class="input-group input-group-lg">
+<%= form_tag '/search', method: :post do %>
+	<div class="input-group input-group-lg">
   <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-<%= f.text_field :ingredent, class: 'form-control recipes-form', placeholder: 'Search recipes' %>
+	<%= text_field_tag :ingredient, 'Search recipes', class: 'form-control recipes-form'  %>
 <% end %>
 </div>
