@@ -9,9 +9,11 @@
 		<div class="col-md-4">
 			<div class="thumbnail">
 				<% if recipe['imageUrlsBySize'].nil? %>
-				<%= image_tag "http://placehold.it/350x200" %>
+					<%= image_tag "http://placehold.it/350x200" %>
+					<% @recipe_image = "http://placehold.it/350x200" %>
 				<% else %>
-				<%= image_tag "#{recipe['imageUrlsBySize']['90'].gsub(/\=s90\-c$/, '')}" %>
+					<%= image_tag "#{recipe['imageUrlsBySize']['90'].gsub(/\=s90\-c$/, '')}" %>
+					<% @recipe_image = "#{recipe['imageUrlsBySize']['90'].gsub(/\=s90\-c$/, '')}" %>
 				<% end %>
 				<div class="caption">
 				<h3><%= recipe["recipeName"] %></h3>
@@ -19,7 +21,7 @@
 				<h5>Ingredients: <%= recipe["ingredients"].join(", ") %></h5>
 				<p><a href="http://www.yummly.com/recipe/<%= recipe["id"] %>" class="btn btn-info" role="button">Get Recipe on Yummly!</a></p>
 				
-				<%= link_to "Save to collection", save_to_collection_path(name: recipe["recipeName"], image_url: recipe['imageUrlsBySize']['90'].gsub(/\=s90\-c$/, ''), ingredient: recipe["ingredients"].join(", "), instruction_url: "http://www.yummly.com/recipe/#{recipe["id"]}"), html: { :class => "btn btn-info", :type =>"button" } %>
+				<%= link_to "Save to collection", save_to_collection_path(name: recipe["recipeName"], image_url: @recipe_image, ingredient: recipe["ingredients"].join(", "), instruction_url: "http://www.yummly.com/recipe/#{recipe["id"]}"), html: { :class => "btn btn-info", :type =>"button" } %>
 				</div>
 			</div>
 		</div>

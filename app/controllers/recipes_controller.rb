@@ -22,6 +22,7 @@ class RecipesController < ApplicationController
 
 		parsed_response = JSON.parse(response)
 		@recipes = parsed_response["matches"].sort_by { |response| response["ingredients"].count }
+		@recipe_image = ""
 	end
 
 	def save_to_collection

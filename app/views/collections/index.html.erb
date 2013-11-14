@@ -1,7 +1,8 @@
 <div class="row">
 <div id="container" class="js-masonry"
   data-masonry-options='{"itemSelector": ".col-md-4" }'>
-<% @collection.recipes.each do |recipe| %>		<div class="col-md-4">
+<% @collection.recipes.each do |recipe| %>		
+	<div class="col-md-4">
 			<div class="thumbnail">
 				<% if recipe.name.nil? %>
 				<%= image_tag "http://placehold.it/350x200" %>
