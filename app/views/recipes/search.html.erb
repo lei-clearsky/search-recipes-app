@@ -19,9 +19,9 @@
 				<h3><%= recipe["recipeName"] %></h3>
 				<h5>Rating: <span class="badge badge-warning"><%= recipe["rating"] %></span></h5>
 				<h5>Ingredients: <%= recipe["ingredients"].join(", ") %></h5>
-				<p><a href="http://www.yummly.com/recipe/<%= recipe["id"] %>" class="btn btn-info" role="button">Get Recipe on Yummly!</a></p>
+				<a href="http://www.yummly.com/recipe/<%= recipe["id"] %>" class="btn btn-info" role="button">Get Recipe on Yummly!</a>
 				
-				<%= link_to "Save to collection", save_to_collection_path(name: recipe["recipeName"], image_url: @recipe_image, ingredient: recipe["ingredients"].join(", "), instruction_url: "http://www.yummly.com/recipe/#{recipe["id"]}"), html: { :class => "btn btn-info", :type =>"button" } %>
+				<div class="addAndRemove"><%= link_to "", save_to_collection_path(name: recipe["recipeName"], image_url: @recipe_image, ingredient: recipe["ingredients"].join(", "), instruction_url: "http://www.yummly.com/recipe/#{recipe["id"]}"), :class => "glyphicon glyphicon-plus", :style=> "text-decoration: none; color: #999;"  %></div>
 				</div>
 			</div>
 		</div>

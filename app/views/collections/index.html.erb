@@ -1,6 +1,8 @@
 <div class="row">
+  
 <div id="container" class="js-masonry"
   data-masonry-options='{"itemSelector": ".col-md-4" }'>
+
 <% @collection.recipes.each do |recipe| %>		
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -12,8 +14,8 @@
 				<div class="caption">
 				<h3><%= recipe.name %></h3>
 				<h5>Ingredients: <%= recipe.ingredient %></h5>
-				<p><a href="#{recipe.instruction_url}" class="btn btn-info" role="button">Get Recipe on Yummly!</a></p>
-				<%= link_to "Remove", remove_recipe_path(id: recipe.id) %>
+				<a href="<%= recipe.instruction_url %>" class="btn btn-info" role="button">Get Recipe on Yummly!</a>
+				<div class="addAndRemove"><%= link_to "", remove_recipe_path(id: recipe.id), :class => "glyphicon glyphicon-remove", :style=> "text-decoration: none; color: #FC4349;"  %></div>
 				</div>
 			</div>
 		</div>

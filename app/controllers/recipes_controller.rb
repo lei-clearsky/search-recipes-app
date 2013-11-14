@@ -6,8 +6,8 @@ class RecipesController < ApplicationController
 
 	def search
 		@recipe = params[:ingredient]
-		base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=bc196f8d&_app_key=959d599a14211e9c9afd49bd0f43cdcf&maxResult=100&"     
-		#base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=#{ENV["APPLICATION_ID"]}&_app_key=#{ENV["APPLICATION_KEY"]}&"
+		base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=#{ENV['APP_ID']}&_app_key=#{ENV['APP_KEY']}&maxResult=50&"
+		#base_endpoint_url = "http://api.yummly.com/v1/api/recipes?_app_id=bc196f8d&_app_key=959d599a14211e9c9afd49bd0f43cdcf&maxResult=50&"     
 	    
 	    if @recipe.include? ","
 	    	ingredients = @recipe.split(",").map {|ingredient| ingredient.strip }
