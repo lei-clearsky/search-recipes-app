@@ -13,42 +13,41 @@
       });
     });
 
-// scroll to top thing
-//plugin
-jQuery.fn.topLink = function(settings) {
-  settings = jQuery.extend({
-    min: 1,
-    fadeSpeed: 100
-  }, settings);
-  return this.each(function() {
-    //listen for scroll
-    var el = jQuery(this);
-    el.hide(); //in case the user forgot
-    jQuery(window).scroll(function() {
-      if(jQuery(window).scrollTop() >= settings.min)
-      {
-        el.fadeIn(settings.fadeSpeed);
-      }
-      else
-      {
-        el.fadeOut(settings.fadeSpeed);
-      }
+  // scroll to top plugin
+  jQuery.fn.topLink = function(settings) {
+    settings = jQuery.extend({
+      min: 1,
+      fadeSpeed: 100
+    }, settings);
+    return this.each(function() {
+      //listen for scroll
+      var el = jQuery(this);
+      el.hide(); //in case the user forgot
+      jQuery(window).scroll(function() {
+        if(jQuery(window).scrollTop() >= settings.min)
+        {
+          el.fadeIn(settings.fadeSpeed);
+        }
+        else
+        {
+          el.fadeOut(settings.fadeSpeed);
+        }
+      });
+    });
+  };
+
+  //usage w/ smoothscroll
+  jQuery(document).ready(function() {
+    //set the link
+    jQuery('#top-link').topLink({
+      min: 500,
+      fadeSpeed: 100
+    });
+    //smoothscroll
+    jQuery('#top-link').click(function(r) {    
+      jQuery("html, body").animate({ scrollTop: 0 }, 300);
     });
   });
-};
-
-//usage w/ smoothscroll
-jQuery(document).ready(function() {
-  //set the link
-  jQuery('#top-link').topLink({
-    min: 500,
-    fadeSpeed: 100
-  });
-  //smoothscroll
-  jQuery('#top-link').click(function(r) {    
-    jQuery("html, body").animate({ scrollTop: 0 }, 300);
-  });
-});
 
   </script>
 </head>
@@ -65,10 +64,16 @@ jQuery(document).ready(function() {
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Search", '/search'%></li>
+            <li><%= link_to "Search", root_path %></li>
+            <li><%= link_to "My Collection", collection_path %></li>
           </ul>
+          <%= render 'layouts/navigation' %>
         </div>
       </div>
+    </div>
+
+    <div class="container">
+      <%= render 'layouts/messages' %>
     </div>
 
     <div class="container">

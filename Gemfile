@@ -52,3 +52,4 @@ end
 gem "rest-client", "~> 1.6.7"
 gem 'json'
 gem 'bootstrap-sass', '~> 3.0.2.0'
+gem 'devise'

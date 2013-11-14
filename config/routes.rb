@@ -1,7 +1,13 @@
 SearchRecipes::Application.routes.draw do
 
+  devise_for :users
   root to: "recipes#index"
   post '/search' => 'recipes#search'
+  get '/save_to_collection' => 'recipes#save_to_collection'
+  get '/remove_recipe' => 'recipes#remove_recipe'
+  get 'collection' => 'collections#index'
+
+  resources :recipes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

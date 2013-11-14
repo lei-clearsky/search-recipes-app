@@ -4,6 +4,7 @@
 <div class="row">
 <div id="container" class="js-masonry"
   data-masonry-options='{"itemSelector": ".col-md-4" }'>
+
 	<% @recipes.map do |recipe| %>
 		<div class="col-md-4">
 			<div class="thumbnail">
@@ -17,6 +18,8 @@
 				<h5>Rating: <span class="badge badge-warning"><%= recipe["rating"] %></span></h5>
 				<h5>Ingredients: <%= recipe["ingredients"].join(", ") %></h5>
 				<p><a href="http://www.yummly.com/recipe/<%= recipe["id"] %>" class="btn btn-info" role="button">Get Recipe on Yummly!</a></p>
+				
+				<%= link_to "Save to collection", save_to_collection_path(name: recipe["recipeName"], image_url: recipe['imageUrlsBySize']['90'].gsub(/\=s90\-c$/, ''), ingredient: recipe["ingredients"].join(", "), instruction_url: "http://www.yummly.com/recipe/#{recipe["id"]}"), html: { :class => "btn btn-info", :type =>"button" } %>
 				</div>
 			</div>
 		</div>
